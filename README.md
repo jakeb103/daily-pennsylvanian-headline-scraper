@@ -1,3 +1,7 @@
+# My Changes To the Template
+
+In an attempt to understand the state of Penn Campus, we could assume that the "opinions" of students would be the best place to look. Thus, my scraper will head to the opinions page and scrape every new opinion article with the title and content. Then, we'll use NLTK's sentiment analysis tools (likely VADER) to see the sentiment behind the top articles and what the trend looks like at any point in time
+
 # Basic Git Scraper Template
 
 This template provides a starting point for **git scraping**—the technique of scraping data from websites and automatically committing it to a Git repository using workflows, [coined by Simon Willison](https://simonwillison.net/2020/Oct/9/git-scraping/).
