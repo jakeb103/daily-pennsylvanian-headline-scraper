@@ -24,13 +24,15 @@ def scrape_data_point():
     loguru.logger.info(f"Request URL: {req.url}")
     loguru.logger.info(f"Request status code: {req.status_code}")
 
-    output = ""
+    output = []
 
     if req.ok:
         soup = bs4.BeautifulSoup(req.text, "html.parser")
         all_opinions = soup.find_all("h3", class_ = "standard-link")
         for opinion in all_opinions:
+            opinion_map = {}
             title = opinion.text
+            opinion_map.title = title
             req2 = requests.get(opinion.find('a').get('href'))
             soup2 = bs4.BeautifulSoup(req2.text, "html.parser")
             article_info = soup2.find("article")
@@ -38,7 +40,8 @@ def scrape_data_point():
             full_text = ""
             for paragraph in paragraphs:
                 full_text += paragraph.text
-            output += title + ": " + full_text + "\n"
+            opinion_map.article_content = full_text
+            output.append(opinion_map)
 
         loguru.logger.info(f"Data point: {output}")
         return output
@@ -60,7 +63,7 @@ if __name__ == "__main__":
     # Load daily event monitor
     loguru.logger.info("Loading daily event monitor")
     dem = daily_event_monitor.DailyEventMonitor(
-        "data/full_opinions_list.json"
+        "data/full_opinions_json_list.json"
     )
 
     # Run scrape
