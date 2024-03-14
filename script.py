@@ -32,7 +32,7 @@ def scrape_data_point():
         for opinion in all_opinions:
             opinion_map = {}
             title = opinion.text
-            opinion_map.title = title
+            opinion_map["title"] = title
             req2 = requests.get(opinion.find('a').get('href'))
             soup2 = bs4.BeautifulSoup(req2.text, "html.parser")
             article_info = soup2.find("article")
@@ -40,7 +40,7 @@ def scrape_data_point():
             full_text = ""
             for paragraph in paragraphs:
                 full_text += paragraph.text
-            opinion_map.article_content = full_text
+            opinion_map["article_content"] = full_text
             output.append(opinion_map)
 
         loguru.logger.info(f"Data point: {output}")
