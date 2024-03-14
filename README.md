@@ -1,6 +1,6 @@
 # My Changes To the Template
 
-In an attempt to understand the state of Penn Campus, we could assume that the "opinions" of students would be the best place to look. Thus, my scraper will head to the opinions page and scrape every new opinion article with the title and content. Then, we'll use NLTK's sentiment analysis tools (likely VADER) to see the sentiment behind the top articles and what the trend looks like at any point in time
+In an attempt to understand the state of Penn Campus, we could assume that the "opinions" of students would be the best place to look. Thus, my scraper will head to the opinions page and scrape every new opinion article with the title and content
 
 # Basic Git Scraper Template
 
